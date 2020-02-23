@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import LoginPage from '../components/LoginPage'
-import OverviewPage from '../components/OverviewPage'
+import LoginView from '../views/LoginView'
+import MainView from '../views/MainView'
 
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', name: 'overview', component: OverviewPage },
-  { path: '/login', name: 'login', component: LoginPage }
+  { path: '/', name: 'main', component: MainView },
+  { path: '/login', name: 'login', component: LoginView }
 ]
 
 export const router = new VueRouter({

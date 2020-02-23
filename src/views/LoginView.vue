@@ -3,11 +3,11 @@
       <form @submit.prevent="login">
           <div class="login__field">
               <label for="username">Benutzername:</label>
-              <input type="text" name="username" id="username" v-model.trim="$v.username.$model">
+              <input class="login__input" type="text" name="username" id="username" v-model.trim="$v.username.$model">
           </div>
           <div class="login__field">
               <label for="password">Passwort:</label>
-              <input type="password" name="password" id="password" v-model.trim="$v.password.$model">
+              <input class="login__input" type="password" name="password" id="password" v-model.trim="$v.password.$model">
           </div>
           <div class="login__field">
               <button type="submit">Anmelden</button>
@@ -21,7 +21,7 @@ import { required } from 'vuelidate/lib/validators'
 import authService from '../services/auth'
 
 export default {
-  name: 'LoginPage',
+  name: 'LoginView',
 
   data () {
     return {
@@ -53,8 +53,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+    @import '~scavold/src/core/styles/_mixins';
+
     .login__field {
         padding: 10px;
+    }
+
+    .login__input {
+      @include sa-input-text;
     }
 </style>

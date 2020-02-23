@@ -13,7 +13,7 @@
 import recordsService from '../services/records'
 
 export default {
-  name: 'OverviewPage',
+  name: 'MainView',
 
   data () {
     return {
