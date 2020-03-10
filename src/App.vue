@@ -8,6 +8,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+  @import "~scavold/src/core/styles/base";
 </style>
