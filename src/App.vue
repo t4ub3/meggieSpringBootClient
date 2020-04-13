@@ -3,11 +3,9 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style lang="scss">
-  @import "~scavold/src/core/styles/base";
+@import "~scavold/src/core/styles/base";
 </style>

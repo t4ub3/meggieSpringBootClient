@@ -4,7 +4,10 @@
       <div class="login__field">
         <label class="login__label" for="username">Benutzername:</label>
         <input
-          :class="['login__input', $v.username.$error ? 'login__input--error' : '']"
+          :class="[
+            'login__input',
+            $v.username.$error ? 'login__input--error' : ''
+          ]"
           type="text"
           name="username"
           id="username"
@@ -14,7 +17,10 @@
       <div class="login__field">
         <label class="login__label" for="password">Passwort:</label>
         <input
-          :class="['login__input', $v.password.$error ? 'login__input--error' : '']"
+          :class="[
+            'login__input',
+            $v.password.$error ? 'login__input--error' : ''
+          ]"
           type="password"
           name="password"
           id="password"
@@ -29,17 +35,17 @@
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators'
-import authService from '../services/auth'
+import { required } from "vuelidate/lib/validators";
+import authService from "../services/auth";
 
 export default {
-  name: 'LoginView',
+  name: "LoginView",
 
-  data () {
+  data() {
     return {
-      username: '',
-      password: ''
-    }
+      username: "",
+      password: ""
+    };
   },
 
   validations: {
@@ -52,20 +58,20 @@ export default {
   },
 
   methods: {
-    async login () {
+    async login() {
       try {
         await authService.login({
           username: this.username,
           password: this.password
-        })
-        this.$router.push({ name: 'overview' })
+        });
+        this.$router.push({ name: "overview" });
       } catch (error) {
-        console.error(error)
-        alert('Login fehlgeschlagen!')
+        console.error(error);
+        alert("Login fehlgeschlagen!");
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
