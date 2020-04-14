@@ -64,7 +64,7 @@ export default {
           username: this.username,
           password: this.password
         });
-        this.$router.push({ name: "overview" });
+        this.$router.push({ name: "main" });
       } catch (error) {
         console.error(error);
         alert("Login fehlgeschlagen!");
@@ -75,7 +75,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~scavold/src/core/styles/_mixins";
+@import "~scavold/src/core/styles/global";
 
 .login {
   display: flex;

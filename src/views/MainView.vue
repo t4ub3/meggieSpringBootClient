@@ -1,17 +1,29 @@
 <template>
   <div>
-    <div>Overview</div>
-    <div v-for="(item, index) in filteredRecords" :key="index">
-      {{ item.mileage }}
-      <font-awesome-icon :icon="getIconName(item.type)"></font-awesome-icon>
-    </div>
+    <me-header></me-header>
+    <me-filter></me-filter>
+    <ul class="main-view__list">
+      <me-list-item
+        v-for="record in filteredRecords"
+        :key="record.id"
+        :record="record"
+      ></me-list-item>
+    </ul>
+    <me-bottom-container></me-bottom-container>
   </div>
 </template>
 
 <script>
+import MeHeader from "../components/me-header.vue";
+import MeFilter from "../components/me-filter.vue";
+import MeListItem from "../components/me-list-item.vue";
+import MeBottomContainer from "../components/me-bottom-container.vue";
+
 import recordsService from "../services/records";
 
 export default {
+  components: { MeHeader, MeFilter, MeListItem, MeBottomContainer },
+
   name: "MainView",
 
   data() {
@@ -29,21 +41,21 @@ export default {
       let records = [];
       for (let record of recordData.drivingRecords) {
         records.push({
-          type: "drivingRecord",
+          type: "driving",
           date: record.date,
           mileage: record.mileage
         });
       }
       for (let record of recordData.fuelRecords) {
         records.push({
-          type: "fuelRecord",
+          type: "fuel",
           date: record.date,
           mileage: record.mileage
         });
       }
       for (let record of recordData.paymentRecords) {
         records.push({
-          type: "paymentRecord",
+          type: "payment",
           date: record.date,
           mileage: record.mileage
         });
@@ -52,7 +64,7 @@ export default {
     },
     getIconName(type) {
       switch (type) {
-        case "drivingRecord":
+        case "driving":
           return "gas-pump";
         default:
           return "euro-sign";
@@ -73,4 +85,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.main-view {
+  &__list {
+    padding: 0;
+  }
+}
+</style>
