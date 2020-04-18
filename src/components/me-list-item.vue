@@ -5,11 +5,13 @@
       class="me-list-item__icon"
       :icon="icon"
     ></font-awesome-icon>
-    <time class="me-list-item__date">{{ record.date }}</time>
-    <div class="me-list-item__mileage">{{ record.mileage }}</div>
+    <time class="me-list-item__date">{{ date }}</time>
+    <div class="me-list-item__mileage">{{ record.mileage }} km</div>
     <sc-button
       :iconLeft="{ name: 'edit' }"
+      theme="plain"
       class="me-list-item__edit"
+      title="Bearbeiten"
     ></sc-button>
   </li>
 </template>
@@ -29,6 +31,13 @@ export default {
     }
   },
   computed: {
+    date() {
+      return new Date(this.record.date).toLocaleDateString("de-DE", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+      });
+    },
     icon() {
       return TYPE_TO_ICON[this.record.type];
     }
