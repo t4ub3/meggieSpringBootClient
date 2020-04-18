@@ -76,7 +76,6 @@ export default {
     try {
       let recordData = (await recordsService.getRecords()).data;
       this.records = this.parseRecords(recordData);
-      console.log(this.records);
     } catch (e) {
       console.error(e);
       alert("Keine Daten. Prüfe, ob du eingeloggt bist!");
@@ -88,7 +87,8 @@ export default {
 <style lang="scss">
 .main-view {
   &__list {
-    padding: 0;
+    padding: 8px;
+    margin: 0;
   }
 }
 </style>

@@ -7,5 +7,5 @@ export default {};
 </script>
 
 <style lang="scss">
-@import "~scavold/src/core/styles/base";
+@import "~@scavold/core/styles/base";
 </style>

@@ -1,6 +1,6 @@
 <template>
   <li class="me-list-item">
-    <div class="me-list-item__picture"></div>
+    <sc-avatar name="Julia Neumann" class="me-list-item__picture"></sc-avatar>
     <font-awesome-icon
       class="me-list-item__icon"
       :icon="icon"
@@ -15,12 +15,13 @@
 </template>
 
 <script>
-import ScButton from "scavold/src/components/button/sc-button";
+import ScAvatar from "@scavold/avatar";
+import ScButton from "@scavold/button";
 import { TYPE_TO_ICON } from "../utils/constants";
 
 export default {
   name: "me-list-item",
-  components: { ScButton },
+  components: { ScAvatar, ScButton },
   props: {
     record: {
       type: Object,
@@ -36,7 +37,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~scavold/src/core/styles/global";
+@import "~@scavold/core/styles/global";
 .me-list-item {
   list-style: none;
   display: flex;

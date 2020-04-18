@@ -75,7 +75,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~scavold/src/core/styles/global";
+@import "~@scavold/core/styles/global";
 
 .login {
   display: flex;
