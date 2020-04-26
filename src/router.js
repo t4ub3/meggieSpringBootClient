@@ -1,13 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import LoginView from "./views/LoginView";
-import MainView from "./views/MainView";
+import MeLoginView from "./views/me-login-view";
+import MeMainView from "./views/me-main-view";
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: "/", name: "main", component: MainView },
-  { path: "/login", name: "login", component: LoginView }
+  { path: "/", name: "main", component: MeMainView },
+  { path: "/login", name: "login", component: MeLoginView }
 ];
 
 export const router = new VueRouter({

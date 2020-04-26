@@ -1,12 +1,12 @@
 <template>
-  <div class="login">
+  <div class="me-login">
     <form @submit.prevent="login">
-      <div class="login__field">
-        <label class="login__label" for="username">Benutzername:</label>
+      <div class="me-login__field">
+        <label class="me-login__label" for="username">Benutzername:</label>
         <input
           :class="[
-            'login__input',
-            $v.username.$error ? 'login__input--error' : ''
+            'me-login__input',
+            $v.username.$error ? 'me-login__input--error' : ''
           ]"
           type="text"
           name="username"
@@ -14,12 +14,12 @@
           v-model.trim="$v.username.$model"
         />
       </div>
-      <div class="login__field">
-        <label class="login__label" for="password">Passwort:</label>
+      <div class="me-login__field">
+        <label class="me-login__label" for="password">Passwort:</label>
         <input
           :class="[
-            'login__input',
-            $v.password.$error ? 'login__input--error' : ''
+            'me-login__input',
+            $v.password.$error ? 'me-login__input--error' : ''
           ]"
           type="password"
           name="password"
@@ -27,8 +27,8 @@
           v-model.trim="$v.password.$model"
         />
       </div>
-      <div class="login__field">
-        <button class="login__button" type="submit">Anmelden</button>
+      <div class="me-login__field">
+        <button class="me-login__button" type="submit">Anmelden</button>
       </div>
     </form>
   </div>
@@ -39,7 +39,7 @@ import { required } from "vuelidate/lib/validators";
 import authService from "../services/auth";
 
 export default {
-  name: "LoginView",
+  name: "me-login-view",
 
   data() {
     return {
@@ -77,7 +77,7 @@ export default {
 <style lang="scss">
 @import "~@scavold/core/styles/global";
 
-.login {
+.me-login {
   display: flex;
   justify-content: center;
   align-items: center;

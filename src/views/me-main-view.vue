@@ -1,15 +1,17 @@
 <template>
-  <div>
-    <me-header></me-header>
-    <me-filter></me-filter>
-    <ul class="main-view__list">
-      <me-list-item
-        v-for="record in filteredRecords"
-        :key="record.id"
-        :record="record"
-      ></me-list-item>
-    </ul>
-    <me-bottom-container></me-bottom-container>
+  <div class="me-main-view">
+    <me-header :user="user"></me-header>
+    <main class="me-main-view__wrapper">
+      <me-filter></me-filter>
+      <ul class="me-main-view__list">
+        <me-list-item
+          v-for="record in filteredRecords"
+          :key="record.id"
+          :record="record"
+        ></me-list-item>
+      </ul>
+      <me-bottom-container></me-bottom-container>
+    </main>
   </div>
 </template>
 
@@ -20,22 +22,26 @@ import MeListItem from "../components/me-list-item.vue";
 import MeBottomContainer from "../components/me-bottom-container.vue";
 
 import recordsService from "../services/records";
+import User from "../models/user";
 
 export default {
   components: { MeHeader, MeFilter, MeListItem, MeBottomContainer },
 
-  name: "MainView",
+  name: "me-main-view",
 
   data() {
     return {
-      records: []
+      records: [],
+      user: null
     };
   },
+
   computed: {
     filteredRecords() {
       return this.records;
     }
   },
+
   methods: {
     parseRecords(recordData) {
       let records = [];
@@ -74,6 +80,8 @@ export default {
 
   async created() {
     try {
+      const userData = JSON.parse(localStorage.getItem("user"));
+      this.user = new User(userData.username, userData.email, "");
       let recordData = (await recordsService.getRecords()).data;
       this.records = this.parseRecords(recordData);
     } catch (e) {
@@ -85,7 +93,12 @@ export default {
 </script>
 
 <style lang="scss">
-.main-view {
+.me-main-view {
+  &__wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
   &__list {
     padding: 8px;
     margin: 0;
