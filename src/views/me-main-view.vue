@@ -1,16 +1,19 @@
 <template>
   <div class="me-main-view">
-    <me-header :user="user"></me-header>
+    <me-header class="me-main-view__header" :user="user"></me-header>
     <main class="me-main-view__wrapper">
       <me-filter></me-filter>
       <ul class="me-main-view__list">
         <me-list-item
+          class="me-main-view__list-item"
           v-for="record in filteredRecords"
           :key="record.id"
           :record="record"
         ></me-list-item>
       </ul>
-      <me-bottom-container></me-bottom-container>
+      <sc-slide-up class="me-main-view__slide-up">
+        <me-bottom-container v-slot:content></me-bottom-container>
+      </sc-slide-up>
     </main>
   </div>
 </template>
@@ -20,12 +23,13 @@ import MeHeader from "../components/me-header.vue";
 import MeFilter from "../components/me-filter.vue";
 import MeListItem from "../components/me-list-item.vue";
 import MeBottomContainer from "../components/me-bottom-container.vue";
+import ScSlideUp from "@scavold/slide-up";
 
 import recordsService from "../services/records";
 import User from "../models/user";
 
 export default {
-  components: { MeHeader, MeFilter, MeListItem, MeBottomContainer },
+  components: { MeHeader, MeFilter, MeListItem, MeBottomContainer, ScSlideUp },
 
   name: "me-main-view",
 
@@ -94,14 +98,37 @@ export default {
 
 <style lang="scss">
 .me-main-view {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__header {
+    width: 100%;
+  }
+
   &__wrapper {
     max-width: 960px;
-    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: hidden;
   }
 
   &__list {
     padding: 8px;
     margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+  &__list-item:last-child {
+    margin-bottom: 8px;
+  }
+
+  &__slide-up {
+    flex-shrink: 0;
   }
 }
 </style>
