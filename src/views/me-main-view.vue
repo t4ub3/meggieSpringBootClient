@@ -11,8 +11,10 @@
           :record="record"
         ></me-list-item>
       </ul>
-      <sc-slide-up class="me-main-view__slide-up">
-        <me-bottom-container v-slot:content></me-bottom-container>
+      <sc-slide-up class="me-main-view__slide-up" :initOpen="true">
+        <template v-slot:content>
+          <me-add-record currentUser="stoffel" type="fuel"></me-add-record>
+        </template>
       </sc-slide-up>
     </main>
   </div>
@@ -22,14 +24,14 @@
 import MeHeader from "../components/me-header.vue";
 import MeFilter from "../components/me-filter.vue";
 import MeListItem from "../components/me-list-item.vue";
-import MeBottomContainer from "../components/me-bottom-container.vue";
+import MeAddRecord from "../components/me-add-record.vue";
 import ScSlideUp from "@scavold/slide-up";
 
 import recordsService from "../services/records";
 import User from "../models/user";
 
 export default {
-  components: { MeHeader, MeFilter, MeListItem, MeBottomContainer, ScSlideUp },
+  components: { MeHeader, MeFilter, MeListItem, MeAddRecord, ScSlideUp },
 
   name: "me-main-view",
 
